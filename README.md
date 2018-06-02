@@ -2,7 +2,17 @@
 
 Below are the procedures on how to use the blog-generator to create a new blog
 
-## Generating JSON file for Blog Content
+[Generating JSON file for the blog content](#generating-json-file-for-the-blog-content)
+
+[Inside the JSON file and filling in the details](#inside-the-json-file-and-filling-in-the-details)
+
+[Creating the static blog page](#creating-the-static-blog-page)
+
+[HTML template changes and modifying all blogs](#html-template-changes-and-modifying-all-blogs)
+
+
+
+## Generating JSON file for the blog content
 Generate the json file to put the blog contents. Run new-blog.py and add the url to your new blog.
 ```
 > python new-blog.py new-blog
@@ -10,7 +20,7 @@ Generate the json file to put the blog contents. Run new-blog.py and add the url
 
 This creates the file **new-blog.json**
 
-## Inside the JSON file and Filling in the Details
+## Inside the JSON file and filling in the details
 The generated json file will look as follows:
 ```json
     {
@@ -21,7 +31,7 @@ The generated json file will look as follows:
         "body" : []    
     }
 ```
-| json key | what to put | example |
+| key | what to add | example |
 | --- | ----------- | ------- |
 | `url` | this is automatically generated | |
 | `blog_image`| a file name that exists in the blogs/images folder **NOTE:** only one image can be added to every blog post | _"new_blog_image.jpg"_
@@ -36,4 +46,11 @@ Once filling in the json is completed, the next step is to generate the html fil
 > python add-blog.py new-blog
 ```
 
-The url to the new blog post will now be **"_website.com_sual stud/blogs/new-blog>"**
+The url to the new blog post will now be **"_website.com_/blogs/new-blog>"**
+
+## HTML template changes and modifying all blogs
+
+In case you want to update the look of each page, it can easily be done by modifying the blog-template.template file. Once it is updated, you can easily update all blog posts by running
+```
+> python modify-blogs.py
+```

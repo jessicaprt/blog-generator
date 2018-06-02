@@ -25,58 +25,14 @@ def get_current_date():
     return '{0}-{1:02d}-{2:02d}'.format(now.year, now.month, now.day)
 
 def is_blog_page(url):
-    url_page = "{0}.html".format(url)
+    url_page = "../blogs/{0}.html".format(url)
     print("checking %s" % url_page)
-    return os.path.isfile(url)
+    return os.path.isfile(url_page)
 
 def generate_blog(title, blog_url):
-    html_template = """<!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    <title>{0}</title>
-    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>	
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../assets/icons/jess-icon.png">
-</head>
-<body>
-    <nav class="navbar navbar-inverse navbar-default navbar-fixed-top shrink" id="navbar">
-        <div class="navbar-header">
-            <a class="navbar-brand scrollspy" href="../index.html"><img src="../assets/icons/jessica.png"></a>
-        </div>
-        <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>                        
-            </button>
-        </div>
-
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="../index.html#about-me">About Me</a></li>
-                <li><a href="../index.html#projects">Projects</a></li>
-                <li><a href="../index.html#daily">Daily</a></li>
-            </ul>
-        </div>
-    </div>
-    </nav>
-    <script type="text/javascript" src="../js/renderblog.js"></script>
-    <div class="blog-main container">
-        <p class="hidden" id="url">{1}</p>
-        <h1 id="blog-title"></h1>
-        <p id="blog-date"></p>
-        <div id="blog-image"></div>
-        <div id="blog-contents"></div>
-        <p id="blog-tags">Tags: </p>
-        <p id="previous-blog">previous blog: </p>
-    </div>
-</body>""".format(title, blog_url)
+    file = open("blog-template.template", "r")
+    template = str(file.read())
+    html_template = template.format(title, blog_url)
 
     new_page_file = "../blogs/%s.html" % blog_url
 
@@ -125,8 +81,8 @@ if __name__ == "__main__":
 
     for blog in blogs:
         if is_blog_page(blog["url"]):
-            pass
+            print("pass")
         else:
             generate_blog(blog["title"], blog["url"])
-            print("New blog successfully created! -- %s" % blog["url"])
+            print("New blog successfully created")
             remove_json_file(json_file)

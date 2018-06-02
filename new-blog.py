@@ -23,6 +23,5 @@ if __name__ == "__main__":
 
     blogs = Blogs()
     blog_id = blogs.get_size()
-    print("creating: %s.json...")
     create_json(url, blog_id)
     print("%s.json' successfully created!" % url)
