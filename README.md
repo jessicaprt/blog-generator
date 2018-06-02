@@ -36,4 +36,4 @@ Once filling in the json is completed, the next step is to generate the html fil
 > python add-blog.py new-blog
 ```
 
-The url to the new blog post will now be **"http://example.com/blogs/\<new-blog>"**
+The url to the new blog post will now be **"_website.com_sual stud/blogs/new-blog>"**
